@@ -93,5 +93,31 @@ Ce projet est pensé de A à Z :
 ---
 
 ## 🔗 Liens utiles
-- 🔗 Dépôt GitHub : *à venir*
+- 🔗 Dépôt GitHub : [CRILZZ](https://github.com/belynnn/CKX__Crilzz)
 - 🌍 Démo en ligne : *à venir / localhost*
+
+---
+
+## Commandes utiles
+### Serveur
+- Lancer le serveur
+```
+symfony server:start
+```
+
+- Couper le serveur
+```
+symfony server:stop
+```
+
+### Controller
+- Créer un nouveau controller
+```
+php bin/console make:controller nom_du_nouveau_controller
+```
+
+### Modèle et Entités
+- Creation des entités et rajout d'attributs et de rélations dans les entités
+```
+php bin/console make:entity
+```
