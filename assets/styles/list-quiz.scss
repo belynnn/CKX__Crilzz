@@ -1,0 +1,11 @@
+#list-quiz article{
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-quiz article div{
+  border: 1px solid #7a0c7c;
+  border-radius: 5px;
+  padding: 1rem;
+}

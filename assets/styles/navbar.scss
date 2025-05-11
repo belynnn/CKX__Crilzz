@@ -1,25 +1,35 @@
 nav {
-  background-color: #7a0c7c;
   padding: 1rem;
-  color: white;
+  background-color: #7a0c7c;
 }
-nav ul {
-  list-style: none;
+
+.navbar{
   display: flex;
-  justify-content: space-around;
-}
-nav ul li {
-  display: inline;
-}
-nav ul li a {
-  color: white;
+  justify-content: space-between;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  max-width: 1024px;
 }
-nav ul li a:hover {
-  background-color: #5a0a5c;
-  border-radius: 5px;
-}
-nav ul li a:visited {
+nav a{
+  text-decoration: none;
   color: white;
+}
+nav a:visited {
+  color: white;
+}
+nav a:hover{
+  text-decoration: none;
+  color: #f5e1f5;
+}
+
+.nav-right a {
+  margin-left: 20px;
+  color: white;
+}
+.nav-right a:visited {
+  color: white;
+}
+.nav-right a:hover {
+  border-bottom: #f5e1f5 solid 2px;
+  color: #f5e1f5;
 }

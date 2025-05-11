@@ -3,23 +3,55 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">CRILZZ</a></li>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <div class="navbar">
+            <a href="#">CRILZZ</a>
+            <div class="nav-right">
+                <a href="#">À propos</a>
+                <a href="#">Contact</a>
+                <a href="#">S'inscrire</a>
+                <a href="#">Se connecter</a>
+            </div>
+        </div>
+    </nav>
 
+    <header>
         <h1>CRILZZ</h1>
         <p class="center">Bienvenue sur la page d'accueil 🐞</p>
     </header>
 
     <main>
         <section>
-            <p>aaa</p>
+            <h2>CRILZZ, c'est quoi ?</h2>
+            <p>CRILZZ est une application permettant de créer des quiz en ligne afin de tester vos connaissances en alphabétisation, français langue étrangère ou concernant le numérique.</p>
+        </section>
+        
+        <section id="list-quiz">
+            <h2>Les derniers crilzz</h2>
+
+            <article>
+                <div>
+                    <h3>Hameçonnage</h3>
+                    <p>blabliblou</p>
+
+                    <a href="#">Voir plus</a> || 
+                    <a href="#">Ouvrir une session</a>
+                </div>
+                <div>
+                    <h3>Phishing</h3>
+                    <p>blabliblou</p>
+
+                    <a href="#">Voir plus</a> || 
+                    <a href="#">Ouvrir une session</a>
+                </div>
+                <div>
+                    <h3>Réseaux sociaux</h3>
+                    <p>blabliblou</p>
+
+                    <a href="#">Voir plus</a> || 
+                    <a href="#">Ouvrir une session</a>
+                </div>
+            </article>
         </section>
     </main>
 
