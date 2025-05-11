@@ -424,6 +424,99 @@ webpack compiled with 1 error
 
 ## Bug 8
 ### Log
+```
+C:\xampp-8-2\htdocs\crilzz>php bin/console doctrine:database:create
+Could not create database "app" for connection named default
+An exception occurred in the driver: could not find driver
+```
 ### Solution
+1. Vérifie que Doctrine ORM est installé
+```
+composer require symfony/orm-pack
+composer require symfony/maker-bundle
+composer require doctrine/doctrine-migrations-bundle
+```
 
 ## Bug 9
+### Log
+```
+In ConnectionFactory.php line 269:
+                              
+  Malformed parameter "url".  
+                              
+
+In MalformedDsnException.php line 11:
+                                     
+  Malformed database connection URL  
+                                     
+```
+### Solution
+Je souhaitais mettre mes informations perso pour me connecter à la base de données dans mon projet symfony directement dans le fichier .env.local mais je n'avais pas définis les même paramètres pour que Symfony puisse extrapoler les informations
+
+Ce que j'ai ajouté au fichier .env déjà rempli
+```
+DATABASE_USER=default_user
+DATABASE_PASSWORD=default_pass
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=3306
+DATABASE_NAME=default_db
+DATABASE_SERVER_VERSION=10.4.32
+DATABASE_CHARSET=utf8mb4
+
+DATABASE_URL="mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?serverVersion=${DATABASE_SERVER_VERSION}&charset=${DATABASE_CHARSET}"
+```
+
+Ce que j'ai ajouté au fichier .env.local vide
+```
+DATABASE_USER=belynn
+DATABASE_PASSWORD=arPLcl357
+DATABASE_NAME=crilzz
+```
+
+## Bug 10
+### Log
+```
+C:\xampp-8-2\htdocs\crilzz>php bin/console make:migration
+
+In ExceptionConverter.php line 101:
+                                                                                                                                       
+  An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'default_user'@'localhost' (using password: YES)  
+                                                                                                                                       
+
+In Exception.php line 24:
+                                                                                                  
+  SQLSTATE[HY000] [1045] Access denied for user 'default_user'@'localhost' (using password: YES)  
+                                                                                                  
+
+In Driver.php line 33:
+                                                                                                  
+  SQLSTATE[HY000] [1045] Access denied for user 'default_user'@'localhost' (using password: YES)  
+                                                                                                  
+
+make:migration [--formatted] [--configuration [CONFIGURATION]]
+```
+
+### Solution
+```
+DATABASE_USER=root
+DATABASE_PASSWORD=
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=3306
+DATABASE_NAME=default_db
+DATABASE_SERVER_VERSION=10.4.32
+DATABASE_CHARSET=utf8mb4
+```
+
+## Bug 121
+### Log
+```
+C:\xampp-8-2\htdocs\crilzz>php bin/console make:migration
+
+In AbstractPlatform.php line 452:
+                                                                                                     
+  Unknown database type enum requested, Doctrine\DBAL\Platforms\MySQL84Platform may not support it.  
+                                                                                                     
+
+make:migration [--formatted] [--configuration [CONFIGURATION]]
+```
+### Solution
