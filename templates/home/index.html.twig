@@ -3,62 +3,56 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <nav>
-        <div class="navbar">
-            <a href="#">CRILZZ</a>
-            <div class="nav-right">
-                <a href="#">À propos</a>
-                <a href="#">Contact</a>
-                <a href="#">S'inscrire</a>
-                <a href="#">Se connecter</a>
-            </div>
+    <header class="bg-light py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold text-crilzz">CRILZZ</h1>
         </div>
-    </nav>
-
-    <header>
-        <h1>CRILZZ</h1>
-        <p class="center">Bienvenue sur la page d'accueil 🐞</p>
     </header>
 
-    <main>
-        <section>
-            <h2>CRILZZ, c'est quoi ?</h2>
-            <p>CRILZZ est une application permettant de créer des quiz en ligne afin de tester vos connaissances en alphabétisation, français langue étrangère ou concernant le numérique.</p>
-        </section>
-        
-        <section id="list-quiz">
-            <h2>Les derniers crilzz</h2>
+    <section class="mb-5 mt-5">
+        <h2 class="h4 text-crilzz">CRILZZ, c'est quoi ?</h2>
+        <p>CRILZZ est une application permettant de créer des quiz en ligne afin de tester vos connaissances en alphabétisation, français langue étrangère ou concernant le numérique.</p>
+    </section>
 
-            <article>
-                <div>
-                    <h3>Hameçonnage</h3>
-                    <p>blabliblou</p>
-
-                    <a href="#">Voir plus</a> || 
-                    <a href="#">Ouvrir une session</a>
+    <section id="list-quiz">
+        <h2 class="h4 text-crilzz mb-4">Les derniers crilzz</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Hameçonnage</h3>
+                        <p class="card-text">blabliblou</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                        <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+                        <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+                    </div>
                 </div>
-                <div>
-                    <h3>Phishing</h3>
-                    <p>blabliblou</p>
-
-                    <a href="#">Voir plus</a> || 
-                    <a href="#">Ouvrir une session</a>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Phishing</h3>
+                        <p class="card-text">blabliblou</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                        <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+                        <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+                    </div>
                 </div>
-                <div>
-                    <h3>Réseaux sociaux</h3>
-                    <p>blabliblou</p>
-
-                    <a href="#">Voir plus</a> || 
-                    <a href="#">Ouvrir une session</a>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Réseaux sociaux</h3>
+                        <p class="card-text">blabliblou</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                        <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+                        <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+                    </div>
                 </div>
-            </article>
-        </section>
-    </main>
-
-    <footer>
-        <p class="center"><a class="a-white" href="https://cril54.fr/mentions-legales/">Mentions légales</a></p>
-        <p class="center">Copyright ©2025, CRIL54</p>
-        <p class="center">Webmaster : contact@cril54.org</p>
-        <p class="center">Développé par <a class="a-white" href="#">Deborah Clerckx</a></p>
-    </footer>
+            </div>
+        </div>
+    </section>
 {% endblock %}

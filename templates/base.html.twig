@@ -1,19 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🐞</text></svg>">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-crilzz px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bold" href="{{ path('app_home') }}">CRILZZ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light rounded"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ path('app_contact') }}">Contact</a>
+                    </li>
+
+                    {% if app.user %}
+                        {% if 'ROLE_ADMIN' in app.user.roles %}
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ path('admin_dashboard') }}">Admin</a></li>
+                        {% elseif 'ROLE_EMPLOYE' in app.user.roles %}
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ path('employe_dashboard') }}">Espace Employé</a></li>
+                        {% elseif 'ROLE_BENEVOLE' in app.user.roles %}
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ path('benevole_dashboard') }}">Espace Bénévole</a></li>
+                        {% elseif 'ROLE_APPRENANT' in app.user.roles %}
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ path('apprenant_dashboard') }}">Espace Apprenant</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link text-white" href="#">Mon profil</a></li>
+                        {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ path('app_logout') }}">
+                                Se déconnecter ({{ app.user.userIdentifier }})
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ path('app_register') }}">S'inscrire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        {% block body %}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </main>
+
+    <footer class="bg-crilzz text-white text-center py-3">
+        <p class="small m-1"><a class="small text-white text-decoration-underline" href="https://cril54.fr/mentions-legales/">Mentions légales</a></p>
+        <p class="small m-1">©2025 CRIL54</p>
+        <p class="small m-1"><a class="small text-white text-decoration-underline" href="{{ path('app_contact') }}">Webmaster</a></p>
+        <p class="small m-1">Développé par <a class="small text-white text-decoration-underline" href="https://www.linkedin.com/in/deborah-clerckx/">Deborah Clerckx</a></p>
+    </footer>
+</body>
 </html>
