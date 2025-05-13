@@ -1,4 +1,5 @@
-@import 'home';
+@use "bootstrap";
+@use "home";
 
 * {
     margin: 0;
@@ -15,14 +16,13 @@ body {
 }
 
 main {
-    margin: 0 auto;
-    max-width: 1024px;
+    margin: 2em auto;
+    max-width: 1600px;
 }
 
 h1 {
     text-align: center;
     color: #7a0c7c;
-    padding: 2rem;
     font-weight: 600;
     font-size: 2rem;
 }
@@ -41,18 +41,9 @@ ul{
     list-style-type: none;
 }
 
-footer{
-    text-align: center;
-    padding: 1rem;
-    background-color: #7a0c7c;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 footer>p,
 footer>p>a{
-    font-size: .8rem;
+    font-size: .8rem !important;
 }
 
 .a-white,
@@ -64,4 +55,49 @@ footer>p>a{
 }
 .center {
     text-align: center;
+}
+
+
+
+.bg-crilzz {
+    background-color: #7A0C7C !important;
+    color: white;
+}
+.text-crilzz {
+    color: #7A0C7C !important;
+}
+.btn-crilzz {
+    background-color: #7A0C7C;
+    color: white;
+    border: none;
+}
+.btn-outline-crilzz {
+    background-color: #7A0C7C;
+    color: white;
+    border: none;
+}
+.btn-crilzz:hover {
+    background-color: #660A68;
+    color: white;
+}
+.form-check-input-crilzz{
+    background-color: white;
+    border: 1px solid #7A0C7C;
+}
+.form-check-input-crilzz:checked {
+    border-color: #7A0C7C;
+    accent-color: #7A0C7C; /* pour changer la couleur de la checkbox */
+    background-color: #7A0C7C;
+}
+.form-check-input-crilzz:focus {
+    border-color: #7A0C7C;
+    box-shadow: 0 0 0 .25rem rgba(122, 12, 124, 0.25);
+}
+.form-control-crilzz{
+    background-color: white;
+    appearance: auto;
+}
+.form-control-crilzz:focus {
+    border-color: #7A0C7C;
+    box-shadow: 0 0 0 .25rem rgba(122, 12, 124, 0.25);
 }
