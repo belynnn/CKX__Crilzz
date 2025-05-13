@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container mt-1">
+        <h1 class="text-center mb-4">Formulaire d'inscription</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        {{ form_start(registrationForm) }}
+
+                            {# Nom d'utilisateur #}
+                            <div class="mb-3">
+                                {{ form_label(registrationForm.username, null, {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.username) }}
+                            </div>
+
+                            {# Email #}
+                            <div class="mb-3">
+                                {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.email) }}
+                            </div>
+
+                            {# Anonymat #}
+                            <div class="form-check mb-3" style="display: none;">
+                                {{ form_widget(registrationForm.isAnonymous, {'attr': {'class': 'form-check-input'}}) }}
+                                {{ form_label(registrationForm.isAnonymous, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                                {{ form_errors(registrationForm.isAnonymous) }}
+                            </div>
+
+                            {# Mot de passe #}
+                            <div class="mb-3">
+                                {{ form_label(registrationForm.plainPassword, null, {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.plainPassword) }}
+                            </div>
+
+                            {# Confirmation mot de passe #}
+                            <div class="mb-3">
+                                {{ form_label(registrationForm.plainPasswordConfirm, null, {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(registrationForm.plainPasswordConfirm, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.plainPasswordConfirm) }}
+                            </div>
+
+                            {# Conditions générales #}
+                            <div class="form-check mb-4">
+                                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input form-check-input-crilzz'}}) }}
+                                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label form-check-label-crilzz'}}) }}
+                                {{ form_errors(registrationForm.agreeTerms) }}
+                            </div>
+
+                            {# Boutons d'action #}
+                            <button type="submit" class="btn btn-crilzz w-100">Créer mon compte</button>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
