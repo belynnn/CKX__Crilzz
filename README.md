@@ -52,7 +52,7 @@ Ce projet a été conçu de bout en bout : de l’infrastructure réseau (Raspbe
 - PHP Symfony6
 
 ### 🎨 Frontend
-- HTML / SCSS / JavaScript
+- HTML / SCSS / JavaScript / Bootstrap
 
 ---
 
