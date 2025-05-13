@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions Légales{% endblock %}
+
+{% block body %}
+    <div class="container py-1">
+        <h1 class="text-center mb-3">Mentions Légales</h1>
+
+        <!-- Section Association & Bureau -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Association & Bureau</h2>
+            </div>
+            <div class="content-section">
+                <p><strong>Statut :</strong> Association loi 1901</p>
+                <p><strong>Siège social :</strong><br>
+                    CRIL54<br>
+                    Tilleul argenté<br>
+                    17 bis rue Laurent Bonnevay<br>
+                    54000 Nancy<br>
+                    Tél. : <a href="tel:+33383970134">03.83.97.01.34</a></p>
+                <p><strong>SIRET :</strong> 38993496900012 - <strong>NAF :</strong> 8899B</p>
+                <p><strong>Président :</strong> Fabrice Begard</p>
+                <p><strong>Vice-Président :</strong> Jean-Pierre Mangel</p>
+                <p><strong>Secrétaire :</strong> Geneviève Henry-Colin</p>
+                <p><strong>Trésorière :</strong> Pascalle Henry</p>
+            </div>
+        </section>
+
+        <!-- Section Site Web -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Site Web</h2>
+            </div>
+            <div class="content-section">
+                <p><strong>Directeur de publication :</strong> Fabrice Begard</p>
+                <p><strong>Responsable web :</strong> Alexandra-Anne Sille</p>
+                <p><strong>Création logo - graphisme :</strong> Alexandra-Anne Sille</p>
+            </div>
+        </section>
+
+        <!-- Section Hébergement -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Hébergement</h2>
+            </div>
+            <div class="content-section">
+                <p><strong>OVH</strong><br>
+                BP 80342 75365 Paris Cedex 08 / France<br>
+                Tél. : <a href="tel:+33173503165">01.73.50.31.65</a></p>
+            </div>
+        </section>
+
+        <!-- Section Collecte de données -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Collecte de données et Loi informatique et libertés</h2>
+            </div>
+            <div class="content-section">
+                <p>Ce site est déclaré auprès de la Commission Nationale Informatique et Libertés. Il respecte les dispositions de la loi 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés. En application de la loi nº 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, vous disposez des droits d'opposition (art. 26 de la loi), d'accès (art. 34 à 38 de la loi) et de rectification (art. 36 de la loi) des données vous concernant.</p>
+                <p>Vous pouvez exercer ce droit de plusieurs façons :</p>
+                <ul>
+                    <li>En utilisant notre <a href="{{ path('app_contact') }}">formulaire de contact</a>;</li>
+                    <li>En envoyant un courrier à : Aérodrome de Nancy - Essey 54510 Tomblaine.</li>
+                </ul>
+                <p>Les données recueillies sont destinées à CRIL54. Aucune information personnelle n'est communiquée ou cédée à des tiers, ni utilisée à des fins personnelles ou commerciales sans votre accord.</p>
+            </div>
+        </section>
+
+        <!-- Section Données personnelles -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Données personnelles - Formulaire - RGPD</h2>
+            </div>
+            <div class="content-section">
+                <p>CRIL54 respecte la réglementation RGPD.</p>
+                <p>Aucune donnée personnelle n'est stockée à aucun moment.</p>
+                <p>Le formulaire de contact est soumis au gestionnaire du site sous une forme non mémorisée.</p>
+                <p>Lorsqu'une demande de contact est établie, les informations fournies sont conservées (sous forme de mail) le temps d'établir la réponse. Elles sont ensuite détruites (dans tous les cas de figure, le délai de conservation n'excédera pas 90 jours).</p>
+            </div>
+        </section>
+
+        <!-- Section Propriété intellectuelle -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Propriété intellectuelle</h2>
+            </div>
+            <div class="content-section">
+                <p>Le site www.cril54.fr est protégé par les lois en vigueur sur la propriété intellectuelle et le droit d'auteur.</p>
+                <p>Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site, sans l'autorisation de CRIL54 est formellement interdite.</p>
+                <p>Le contrevenant s'expose à des sanctions civiles et pénales et notamment aux peines prévues aux articles L. 335.2 et L. 343.1 du code de la Propriété Intellectuelle.</p>
+            </div>
+        </section>
+
+        <!-- Section Cookies -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Cookies</h2>
+            </div>
+            <div class="content-section">
+                <p>CRIL54 est susceptible de provoquer l'installation de cookie(s) sur l'ordinateur de l'utilisateur. Un cookie est un fichier de petite taille, qui ne permet pas l'identification de l'utilisateur, mais qui enregistre des informations relatives à la navigation d'un ordinateur sur un site.</p>
+                <p>Les données ainsi obtenues visent à faciliter la navigation ultérieure sur le site, et ont également vocation à permettre diverses mesures de fréquentation.</p>
+                <p>Vous êtes libre d'accepter ou de refuser les cookies en configurant votre navigateur (désactivation de tout ou partie des cookies - voir manuel de votre navigateur Web ou fonction d'aide).</p>
+            </div>
+        </section>
+
+        <!-- Section Liens hypertextes -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2 class="h4 mb-3">Liens hypertextes</h2>
+            </div>
+            <div class="content-section">
+                <p>Le site www.cril54.fr peut contenir un certain nombre de liens hypertextes vers d'autres sites, mis en place avec l'autorisation de CRIL54.</p>
+                <p>Cependant, CRIL54 n'a pas la possibilité de vérifier le contenu des sites ainsi visités, et n'assumera en conséquence aucune responsabilité de ce fait.</p>
+                <p>L'Utilisateur s'interdit donc à engager la responsabilité du site concernant le contenu et les ressources relatives à ces liens hypertextes sortants.</p>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
