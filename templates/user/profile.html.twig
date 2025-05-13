@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block body %}
+  <h1>{{ user.username }}</h1>
+
+  <section class="mb-4">
+    <h2>Informations générales</h2>
+    <ul>
+        <li>{{ user.email }}</li>
+        <li>Rôles : {{ user.roles|join(', ') }}</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2>Mes derniers Crilzz</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title h5">Hameçonnage</h3>
+            <p class="card-text">blabliblou</p>
+          </div>
+          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title h5">Phishing</h3>
+            <p class="card-text">blabliblou</p>
+          </div>
+          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title h5">Réseaux sociaux</h3>
+            <p class="card-text">blabliblou</p>
+          </div>
+          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="{{ path('app_user_edit_profile') }}" class="btn btn-crilzz">Modifier mon profil</a>
+  <a href="{{ path('app_user_delete_profile') }}" class="btn btn-danger">Supprimer mon profil</a>
+{% endblock %}
