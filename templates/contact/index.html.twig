@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous{% endblock %}
+
+{% block body %}
+    <div class="container mt-1">
+        <h1 class="text-center mb-2">Formulaire de Contact</h1>
+
+        <main>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Nous sommes là pour vous aider !</h5>
+                            <p class="card-text">Si vous avez une question, un bug à signaler ou une suggestion à faire, n'hésitez pas à nous envoyer un message.</p>
+
+                            <form id="contact-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nom</label>
+                                    <input type="text" id="name" class="form-control form-control-crilzz" required>
+                                    <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" class="form-control form-control-crilzz" required>
+                                    <div class="invalid-feedback">Veuillez entrer un email valide.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Sujet</label>
+                                    <select id="subject" class="form-control form-control-crilzz" required>
+                                        <option value="" disabled selected>-- Selectionner un sujet --</option>
+                                        <option value="Bug">Signalement de bug</option>
+                                        <option value="Suggestion">Suggestion</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                    <div class="invalid-feedback">Veuillez sélectionner un sujet.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea id="message" rows="4" class="form-control form-control-crilzz" maxlength="1000" required></textarea>
+                                    <small id="message-counter" class="form-text text-muted">0 / 1000</small>
+                                    <div class="invalid-feedback">Veuillez écrire un message plus long.</div>
+                                </div>
+
+                                <button id="contact-email" type="button" class="btn btn-crilzz w-100">Envoyer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
