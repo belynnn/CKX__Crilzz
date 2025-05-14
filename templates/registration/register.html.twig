@@ -26,13 +26,6 @@
                                 {{ form_errors(registrationForm.email) }}
                             </div>
 
-                            {# Anonymat #}
-                            <div class="form-check mb-3" style="display: none;">
-                                {{ form_widget(registrationForm.isAnonymous, {'attr': {'class': 'form-check-input'}}) }}
-                                {{ form_label(registrationForm.isAnonymous, null, {'label_attr': {'class': 'form-check-label'}}) }}
-                                {{ form_errors(registrationForm.isAnonymous) }}
-                            </div>
-
                             {# Mot de passe #}
                             <div class="mb-3">
                                 {{ form_label(registrationForm.plainPassword, null, {'label_attr': {'class': 'form-label'}}) }}
