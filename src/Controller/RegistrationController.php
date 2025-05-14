@@ -31,10 +31,15 @@ class RegistrationController extends AbstractController
             // Ajoute le rôle par défaut
             $user->setRoles(['ROLE_USER']);
 
+            // Générer dynamiquement un avatar depuis le nom d’utilisateur
+            $username = $user->getUsername();
+            $avatar = 'https://ui-avatars.com/api/?name=' . urlencode($username) . '&background=0D8ABC&color=fff&size=256';
+            
+            // Enregistrer l'URL de l'avatar dans la base de données
+            $user->setAvatar($avatar);
+
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // do anything else you need here, like send an email
 
             return $security->login($user, 'form_login', 'main');
         }
