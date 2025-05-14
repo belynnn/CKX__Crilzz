@@ -1,60 +1,112 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ user.username }}{% endblock %}
+{% block title %}Profil de {{ user.username }}{% endblock %}
 
 {% block body %}
-  <h1>{{ user.username }}</h1>
-
-  <section class="mb-4">
-    <h2>Informations générales</h2>
-    <ul>
-        <li>{{ user.email }}</li>
-        <li>Rôles : {{ user.roles|join(', ') }}</li>
-    </ul>
-  </section>
-
-  <section class="mb-4">
-    <h2>Mes derniers Crilzz</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="card-title h5">Hameçonnage</h3>
-            <p class="card-text">blabliblou</p>
+  <div class="container py-2">
+    <!-- Avatar Section -->
+    <section class="mb-5">
+      <h2 class="h4 text-crilzz mb-3">Informations générales</h2>
+      
+      <div class="card shadow-sm p-3">
+        <div class="h-100 d-flex align-items-center gap-4">
+          <!-- Avatar -->
+          <div class="avatar-wrapper position-relative">
+            <a href="{{ path('app_user_edit_image') }}">
+              <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}"
+                  alt="Avatar de {{ user.username }}"
+                  class="avatar img-fluid rounded-circle shadow-sm"
+              >
+              <img src="{{ asset('images/edit.svg') }}"
+                    alt="Modifier l'avatar"
+                    class="avatar-icon position-absolute top-50 start-50 translate-middle"
+              >
+            </a>
           </div>
-          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
-            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
-            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+
+          <!-- Infos utilisateur -->
+          <div class="text-start">
+            <div class="h-100 d-flex align-items-center gap-1">
+              <h1>{{ user.username }}</h1>
+              
+              <a href="{#{{ path('app_user_edit_username') }}#}" class="mb-1 small btn-crilzz-small">Modifier votre pseudo</a>
+            </div>
+
+            <div class="h-100 d-flex align-items-center gap-1">
+              <p class="mb-1">Email : {{ user.email }}</p>
+
+              <a href="{#{{ path('app_user_edit_email') }}#}" class="mb-1 small btn-crilzz-small">Modifier votre email</a>
+            </div>
+
+            <p class="mb-0">
+              Rôle : 
+              {% if 'ROLE_ADMIN' in user.roles %}
+                Administrateur·rice
+              {% elseif 'ROLE_EMPLOYEE' in user.roles %}
+                Employé·e
+              {% elseif 'ROLE_BENEVOLE' in user.roles %}
+                Bénévole
+              {% else %}
+                Apprenant·e
+              {% endif %}
+            </p>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="card-title h5">Phishing</h3>
-            <p class="card-text">blabliblou</p>
-          </div>
-          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
-            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
-            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="card-title h5">Réseaux sociaux</h3>
-            <p class="card-text">blabliblou</p>
-          </div>
-          <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
-            <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
-            <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <a href="{{ path('app_user_edit_profile') }}" class="btn btn-crilzz">Modifier mon profil</a>
-  <a href="{{ path('app_user_delete_profile') }}" class="btn btn-danger">Supprimer mon profil</a>
+    <!-- Informations générales -->
+    <section class="mb-4">
+    
+    </section>
+
+    <!-- Crilzz (Derniers Crilzz) -->
+    <section class="mb-4">
+      <h2 class="h4 text-crilzz mb-3">Mes derniers Crilzz</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Card 1 -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h3 class="card-title h5">Hameçonnage</h3>
+              <p class="card-text">blabliblou</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between bg-light">
+              <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+              <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h3 class="card-title h5">Phishing</h3>
+              <p class="card-text">blabliblou</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between bg-light">
+              <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+              <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h3 class="card-title h5">Réseaux sociaux</h3>
+              <p class="card-text">blabliblou</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between bg-light">
+              <a href="#" class="btn btn-outline-crilzz btn-sm">Voir plus</a>
+              <a href="#" class="btn btn-crilzz btn-sm">Ouvrir une session</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bouton supprimer le profil -->
+    <a href="{{ path('app_user_delete_profile') }}" class="btn btn-danger">Supprimer mon profil</a>
+  </div>
 {% endblock %}

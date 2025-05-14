@@ -71,6 +71,12 @@ footer>p>a{
     color: white;
     border: none;
 }
+.btn-crilzz-small {
+    color: #7A0C7C;
+    border: none;
+    font-size: 12px;
+    padding: .2rem .8rem;
+}
 .btn-outline-crilzz {
     background-color: #7A0C7C;
     color: white;
@@ -100,4 +106,60 @@ footer>p>a{
 .form-control-crilzz:focus {
     border-color: #7A0C7C;
     box-shadow: 0 0 0 .25rem rgba(122, 12, 124, 0.25);
+}
+.avatar-navbar{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.avatar-wrapper {
+    position: relative;
+    width: 128px;
+    height: 128px;
+}
+.avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #7a0c7c60;
+    transition: opacity .3s ease;
+}
+.avatar:hover {
+    opacity: .3;
+}
+.avatar-icon {
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none; /* Ne gêne pas le clic */
+}
+.avatar-wrapper:hover .avatar-icon {
+    opacity: .7;
+}
+.image-choice-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.image-choice-label {
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 4px;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+.image-choice-label input[type="radio"] {
+    display: none;
+}
+.image-choice-label img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.image-choice-label input[type="radio"]:checked + img {
+    border: 3px solid #7A0C7C;
 }
