@@ -44,11 +44,6 @@ class RegistrationForm extends AbstractType
                     ]),
                 ],
             ])
-
-            ->add('isAnonymous', CheckboxType::class, [
-                'label' => 'Je suis anonyme',
-                'required' => false,
-            ])
             
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
