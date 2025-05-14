@@ -37,8 +37,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
-    #[ORM\Column(type: 'boolean')]
-    private bool $isAnonymous = false;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $avatar = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isActive = true;
@@ -99,6 +99,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
     
     public function getEmail(): ?string
     {
@@ -123,18 +134,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function isAnonymous(): bool
-    {
-        return $this->isAnonymous;
-    }
-
-    public function setIsAnonymous(bool $isAnonymous): self
-    {
-        $this->isAnonymous = $isAnonymous;
 
         return $this;
     }
