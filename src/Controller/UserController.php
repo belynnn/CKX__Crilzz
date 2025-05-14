@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserProfileType;
+use App\Form\UserImageType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -33,44 +31,52 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #region Editer profil user
-    #[Route('/editer-profil', name: 'app_user_edit_profile')]
+    #region Modifier IMAGE
+    #[Route('/profil/modifier-image', name: 'app_user_edit_image')]
     #[IsGranted('ROLE_USER')]
-    public function editProfile(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    public function editImage(Request $request, EntityManagerInterface $em): Response
     {
-        /** @var User $user */
         $user = $this->getUser();
 
-        // Créer le formulaire avec l'utilisateur courant
-        $form = $this->createForm(UserProfileType::class, $user);
+        // Récupérer le répertoire d'images
+        $imageDirectory = $this->getParameter('avatars_directory'); // Exemple : '/public/uploads/avatars'
+
+        // Lire les fichiers dans le répertoire
+        $images = scandir($imageDirectory); // Liste des fichiers
+        $images = array_filter($images, function($file) {
+            // Filtrer les fichiers pour ne garder que les images
+            return preg_match('/\.(jpg|jpeg|png|gif|svg)$/', $file);
+        });
+
+        // Re-indexer le tableau
+        $images = array_values($images);
+
+        // Formulaire pour éditer l'image de profil
+        $form = $this->createForm(UserImageType::class, $user, [
+            'images' => $images,  // Passer un tableau d'images
+        ]);
+
+        // Traiter la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupérer le mot de passe en clair si présent
-            $plainPassword = $form->get('plainPassword')->getData();
-            
-            // Si un mot de passe a été renseigné, on l'encode et on le met à jour
-            if ($plainPassword) {
-                $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
-                $user->setPassword($hashedPassword);
-            }
+            // Logique pour mettre à jour l'image de profil
+            $selectedImage = $form->get('avatar')->getData();
+            $user->setAvatar($selectedImage);  // Utilisation du setter pour définir l'image de profil
 
-            // Sauvegarder les modifications
-            $em->persist($user);
-            $em->flush();
+            $em->flush();  // Enregistrer les changements dans la base de données
 
-            // Ajouter un message flash pour la mise à jour réussie
-            $this->addFlash('success', 'Profil mis à jour avec succès.');
-
-            // Rediriger vers la page de modification de profil après succès
-            return $this->redirectToRoute('app_user_edit_profile');
+            // Rediriger l'utilisateur vers la page de profil
+            return $this->redirectToRoute('app_user_profile');
         }
 
-        return $this->render('user/edit_profile.html.twig', [
-            'editProfileForm' => $form->createView(),
+        // Retourner la vue avec le formulaire et la galerie d'images
+        return $this->render('user/edit_avatar.html.twig', [
+            'editImageForm' => $form->createView(),
+            'images' => $images,
         ]);
     }
-    #endregion Editer profil user
+    #endregion Modifier image
 
     #region Supprimer profil user
     #[Route('/supprimer-profil', name: 'app_user_delete_profile')]

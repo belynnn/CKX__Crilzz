@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'image de profil{% endblock %}
+
+{% block body %}
+  <h1>Modifier votre image de profil</h1>
+
+  <div class="image-gallery mt-4">
+    <h2>Galerie d'images</h2>
+    <div class="row">
+      {{ form_start(editImageForm) }}
+        <div class="image-choice-list">
+          {% for child in editImageForm.avatar %}
+            <label class="image-choice-label">
+              {{ form_widget(child) }}
+              <img src="{{ asset('uploads/avatars/' ~ child.vars.value) }}"
+                alt="{{ child.vars.label }}"
+                class="image-choice-preview"
+              />
+            </label>
+          {% endfor %}
+        </div>
+
+        <button class="btn btn-crilzz">Mettre à jour</button>
+      {{ form_end(editImageForm) }}
+    </div>
+  </div>
+
+  <a href="{{ path('app_user_profile') }}" class="btn btn-secondary mt-3">Retour au profil</a>
+{% endblock %}
