@@ -507,7 +507,7 @@ DATABASE_SERVER_VERSION=10.4.32
 DATABASE_CHARSET=utf8mb4
 ```
 
-## Bug 121
+## Bug 12
 ### Log
 ```
 C:\xampp-8-2\htdocs\crilzz>php bin/console make:migration
@@ -520,3 +520,28 @@ In AbstractPlatform.php line 452:
 make:migration [--formatted] [--configuration [CONFIGURATION]]
 ```
 ### Solution
+J'ai créé un fichier migration.bat qui me permet de drop la base de données Doctrine et de la recréer, de supprimer les anciennes version de migration et de lancer une migration. Le problème venait d'une erreur dans la base de données.
+```
+@REM Delete toute ce qui se trouve dans le dossier migrations qui commence par V 
+del migrations\V*
+@REM Supprimer la base de données (et empêcher l'interaction)
+symfony console doctrine:database:drop --force --no-interaction
+@REM Créer une base de données avec le même nom (elle est vide)
+symfony console doctrine:database:create
+@REM On fait une migration de notre code actuel pour recréer les tables à jour
+symfony console make:migration --no-interaction
+@REM On synchronise avec la DB
+symfony console doctrine:migration:migrate --no-interaction
+@REM Lancer les fixtures
+symfony console doctrine:fixtures:load --no-interaction
+```
+
+## Bug 13
+### Log
+```
+
+```
+### Solution
+```
+
+```
