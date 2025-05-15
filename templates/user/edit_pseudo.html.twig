@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon pseudo{% endblock %}
+
+{% block body %}
+<section class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm p-4">
+        <h2 class="text-center mb-4">Modifier mon pseudo</h2>
+
+        {{ form_start(editPseudoForm) }}
+          <div class="form-group mb-3">
+            {{ form_label(editPseudoForm.username, 'Nouveau pseudo', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(editPseudoForm.username, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(editPseudoForm.username) }}
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{{ path('app_user_profile') }}" class="btn btn-secondary ms-2">Annuler</a>
+          </div>
+        {{ form_end(editPseudoForm) }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
