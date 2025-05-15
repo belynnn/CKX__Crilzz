@@ -14,6 +14,21 @@
     {% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
+    <div class="toast-container position-fixed pt-5 start-50 translate-middle-x">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="toast align-items-center text-white bg-{{ label }} border-0 show mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
     <nav class="navbar navbar-expand-lg bg-crilzz px-4">
         <div class="container-fluid">
             <a class="navbar-brand text-white fw-bold" href="{{ path('app_home') }}">CRILZZ</a>
