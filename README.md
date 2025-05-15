@@ -98,6 +98,19 @@ Ce projet est pensé de A à Z :
 
 ---
 
+## Paramètre utile
+Ce paramètre vous permet d'utiliser les abréviations **Emmet** directement dans vos fichiers Twig.
+1. Vous rendre dans vos settings
+2. Sélectionner "> Extensions" dans le menu de gauche
+3. Sélectionner "Emmet"
+4. Quand vous lisez :
+```
+Include Languages
+Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and Emmet supported language. For example: {"vue-html": "html", "javascript": "javascriptreact"}
+```
+5. Cliquez sur "Ajouter"
+6. Ajoutez "twig" en "**Key**" et "html" en "**Value**"
+
 ## Commandes utiles
 ### Serveur
 - Lancer le serveur
@@ -108,6 +121,20 @@ symfony server:start
 - Couper le serveur
 ```
 symfony server:stop
+ou
+CTRL+C (si vous ne pouvez pas écrire)
+```
+
+- Lancer NPM
+```
+npm run watch
+```
+
+- Couper NPM
+```
+CTRL+C
+Répondez "O"
+Appuyez sur Enter
 ```
 
 ### Controller
