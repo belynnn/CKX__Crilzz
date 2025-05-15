@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserAvatarForm;
+use App\Form\UserPseudoForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -78,8 +79,44 @@ final class UserController extends AbstractController
     }
     #endregion Modifier AVATAR
 
-    #region Supprimer profil user
-    #[Route('/supprimer-profil', name: 'app_user_delete_profile')]
+    #region Modifier PSEUDO
+    #[Route('/profil/modifier-pseudo', name: 'app_user_edit_pseudo')]
+    #[IsGranted('ROLE_USER')]
+    public function editPseudo(Request $request, EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
+
+        // Formulaire pour éditer le username de profil
+        $form = $this->createForm(UserPseudoForm::class, $user);
+
+        // Traiter la soumission du formulaire
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Logique pour mettre à jour le username de profil
+            $em->flush();  // Enregistrer les changements dans la base de données
+
+            $this->addFlash('success', 'Votre pseudo a bien été mis à jour.');
+
+            // Rediriger l'utilisateur vers la page de profil
+            return $this->redirectToRoute('app_user_profile');
+        }
+
+        // Retourner la vue avec le formulaire
+        return $this->render('user/edit_pseudo.html.twig', [
+            'editPseudoForm' => $form->createView(),
+        ]);
+    }
+    #endregion Modifier PSEUDO
+
+    #region Modifier EMAIL
+    #endregion Modifier EMAIL
+
+    #region Modifier MOT DE PASSE
+    #endregion Modifier MOT DE PASSE
+
+    #region Supprimer PROFIL
+    #[Route('/profil/supprimer', name: 'app_user_delete_profile')]
     #[IsGranted('ROLE_USER')]
     public function deleteProfile(): Response
     {
@@ -89,5 +126,5 @@ final class UserController extends AbstractController
             'user' => $user,
         ]);
     }
-    #endregion Supprimer profil user
+    #endregion Supprimer PROFIL
 }
