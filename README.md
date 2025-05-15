@@ -143,8 +143,19 @@ Appuyez sur Enter
 php bin/console make:controller nom_du_nouveau_controller
 ```
 
-### Modèle et Entités
+### Modèle et Entité
 - Creation des entités et rajout d'attributs et de rélations dans les entités
 ```
 php bin/console make:entity
+```
+
+### Formulaire
+- Créer un nouveau formulaire
+```
+php bin/console make:form ContactForm
+```
+
+- Créer un nouveau formulaire lié à une Entité
+```
+php bin/console make:form UserPseudoForm App\Entity\Nom_de_l'entité_cible_si_il_y_en_a_une
 ```
