@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\UserImageType;
+use App\Form\UserAvatarForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -31,38 +31,38 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #region Modifier IMAGE
-    #[Route('/profil/modifier-image', name: 'app_user_edit_image')]
+    #region Modifier AVATAR
+    #[Route('/profil/modifier-avatar', name: 'app_user_edit_avatar')]
     #[IsGranted('ROLE_USER')]
-    public function editImage(Request $request, EntityManagerInterface $em): Response
+    public function editAvatar(Request $request, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 
-        // Récupérer le répertoire d'images
-        $imageDirectory = $this->getParameter('avatars_directory'); // Exemple : '/public/uploads/avatars'
+        // Récupérer le répertoire d'avatars
+        $avatarDirectory = $this->getParameter('avatars_directory'); // Exemple : '/public/uploads/avatars'
 
         // Lire les fichiers dans le répertoire
-        $images = scandir($imageDirectory); // Liste des fichiers
-        $images = array_filter($images, function($file) {
-            // Filtrer les fichiers pour ne garder que les images
+        $avatars = scandir($avatarDirectory); // Liste des fichiers
+        $avatars = array_filter($avatars, function($file) {
+            // Filtrer les fichiers pour ne garder que les avatars
             return preg_match('/\.(jpg|jpeg|png|gif|svg)$/', $file);
         });
 
         // Re-indexer le tableau
-        $images = array_values($images);
+        $avatars = array_values($avatars);
 
-        // Formulaire pour éditer l'image de profil
-        $form = $this->createForm(UserImageType::class, $user, [
-            'images' => $images,  // Passer un tableau d'images
+        // Formulaire pour éditer l'avatar de profil
+        $form = $this->createForm(UserAvatarForm::class, $user, [
+            'avatars' => $avatars,  // Passer un tableau d'avatars
         ]);
 
         // Traiter la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Logique pour mettre à jour l'image de profil
-            $selectedImage = $form->get('avatar')->getData();
-            $user->setAvatar($selectedImage);  // Utilisation du setter pour définir l'image de profil
+            // Logique pour mettre à jour l'avatar de profil
+            $selectedAvatar = $form->get('avatar')->getData();
+            $user->setAvatar($selectedAvatar);  // Utilisation du setter pour définir l'avatar de profil
 
             $em->flush();  // Enregistrer les changements dans la base de données
 
@@ -70,13 +70,13 @@ final class UserController extends AbstractController
             return $this->redirectToRoute('app_user_profile');
         }
 
-        // Retourner la vue avec le formulaire et la galerie d'images
+        // Retourner la vue avec le formulaire et la galerie d'avatars
         return $this->render('user/edit_avatar.html.twig', [
-            'editImageForm' => $form->createView(),
-            'images' => $images,
+            'editAvatarForm' => $form->createView(),
+            'avatars' => $avatars,
         ]);
     }
-    #endregion Modifier image
+    #endregion Modifier AVATAR
 
     #region Supprimer profil user
     #[Route('/supprimer-profil', name: 'app_user_delete_profile')]

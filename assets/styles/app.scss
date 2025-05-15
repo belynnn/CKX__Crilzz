@@ -139,27 +139,27 @@ footer>p>a{
 .avatar-wrapper:hover .avatar-icon {
     opacity: .7;
 }
-.image-choice-list {
+.avatar-choice-list {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
-.image-choice-label {
+.avatar-choice-label {
     cursor: pointer;
     border: 2px solid transparent;
     padding: 4px;
     border-radius: 10px;
     transition: border 0.3s;
 }
-.image-choice-label input[type="radio"] {
+.avatar-choice-label input[type="radio"] {
     display: none;
 }
-.image-choice-label img {
+.avatar-choice-label img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 10px;
 }
-.image-choice-label input[type="radio"]:checked + img {
+.avatar-choice-label input[type="radio"]:checked + img {
     border: 3px solid #7A0C7C;
 }

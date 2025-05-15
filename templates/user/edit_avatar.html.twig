@@ -1,28 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier l'image de profil{% endblock %}
+{% block title %}Modifier l'avatar de profil{% endblock %}
 
 {% block body %}
-  <h1>Modifier votre image de profil</h1>
+  <h1>Modifier votre avatar de profil</h1>
 
-  <div class="image-gallery mt-4">
-    <h2>Galerie d'images</h2>
+  <div class="avatar-gallery mt-4">
+    <h2>Galerie d'avatars</h2>
     <div class="row">
-      {{ form_start(editImageForm) }}
-        <div class="image-choice-list">
-          {% for child in editImageForm.avatar %}
-            <label class="image-choice-label">
+      {{ form_start(editAvatarForm) }}
+        <div class="avatar-choice-list">
+          {% for child in editAvatarForm.avatar %}
+            <label class="avatar-choice-label">
               {{ form_widget(child) }}
               <img src="{{ asset('uploads/avatars/' ~ child.vars.value) }}"
                 alt="{{ child.vars.label }}"
-                class="image-choice-preview"
+                class="avatar-choice-preview"
               />
             </label>
           {% endfor %}
         </div>
 
         <button class="btn btn-crilzz">Mettre à jour</button>
-      {{ form_end(editImageForm) }}
+      {{ form_end(editAvatarForm) }}
     </div>
   </div>
 
