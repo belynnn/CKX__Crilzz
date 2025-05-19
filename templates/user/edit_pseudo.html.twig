@@ -3,26 +3,41 @@
 {% block title %}Modifier mon pseudo{% endblock %}
 
 {% block body %}
-<section class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow-sm p-4">
-        <h2 class="text-center mb-4">Modifier mon pseudo</h2>
+  <section class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm p-4">
+          <h2 class="text-center mb-4">Modifier mon pseudo</h2>
 
-        {{ form_start(editPseudoForm) }}
-          <div class="form-group mb-3">
-            {{ form_label(editPseudoForm.username, 'Nouveau pseudo', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(editPseudoForm.username, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(editPseudoForm.username) }}
+          <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1100;">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="toast align-items-center text-white bg-danger border-0 show mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
           </div>
 
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-            <a href="{{ path('app_user_profile') }}" class="btn btn-secondary ms-2">Annuler</a>
-          </div>
-        {{ form_end(editPseudoForm) }}
+          {{ form_start(editPseudoForm) }}
+            <div class="form-group mb-3">
+              {{ form_label(editPseudoForm.username, 'Nouveau pseudo', {'label_attr': {'class': 'form-label'}}) }}
+              {{ form_widget(editPseudoForm.username, {'attr': {'class': 'form-control form-control-crilzz'}}) }}
+              {{ form_errors(editPseudoForm.username) }}
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-crilzz">Enregistrer</button>
+              <a href="{{ path('app_user_profile') }}" class="btn btn-secondary ms-2">Annuler</a>
+            </div>
+          {{ form_end(editPseudoForm) }}
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endblock %}

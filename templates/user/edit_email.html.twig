@@ -3,24 +3,46 @@
 {% block title %}Modifier mon email{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="mb-4">Modifier mon adresse email</h1>
+  <section class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm p-4">
+          <h2 class="text-center mb-4">Modifier mon adresse email</h2>
 
-        {{ form_start(editEmailForm) }}
-
-            <div class="mb-3">
-                {{ form_label(editEmailForm.email, 'Nouvel email', {'label_attr': {'class': 'form-label'}}) }}
-                {{ form_widget(editEmailForm.email, {'attr': {'class': 'form-control' ~ (editEmailForm.email.vars.errors|length > 0 ? ' is-invalid' : '') }}) }}
-                
-                {% for error in editEmailForm.email.vars.errors %}
-                    <div class="invalid-feedback">
-                        {{ error.message }}
+          <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1100;">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="toast align-items-center text-white bg-danger border-0 show mb-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
                     </div>
                 {% endfor %}
+            {% endfor %}
+          </div>
+
+          {{ form_start(editEmailForm) }}
+            <div class="mb-3">
+              {{ form_label(editEmailForm.email, 'Nouvel email', {'label_attr': {'class': 'form-label'}}) }}
+              {{ form_widget(editEmailForm.email, {'attr': {'class': 'form-control form-control-crilzz' ~ (editEmailForm.email.vars.errors|length > 0 ? ' is-invalid' : '') }}) }}
+              
+              {% for error in editEmailForm.email.vars.errors %}
+                <div class="invalid-feedback">
+                  {{ error.message }}
+                </div>
+              {% endfor %}
             </div>
 
-            <button class="btn btn-primary">Mettre à jour</button>
-
-        {{ form_end(editEmailForm) }}
+            <div class="text-center">
+              <button class="btn btn-crilzz">Mettre à jour</button>
+              <a href="{{ path('app_user_profile') }}" class="btn btn-secondary ms-2">Annuler</a>
+            </div>
+          {{ form_end(editEmailForm) }}
+        </div>
+      </div>
     </div>
+  </section>
 {% endblock %}
