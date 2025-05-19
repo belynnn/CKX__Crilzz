@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon email{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Modifier mon adresse email</h1>
+
+        {{ form_start(editEmailForm) }}
+
+            <div class="mb-3">
+                {{ form_label(editEmailForm.email, 'Nouvel email', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(editEmailForm.email, {'attr': {'class': 'form-control' ~ (editEmailForm.email.vars.errors|length > 0 ? ' is-invalid' : '') }}) }}
+                
+                {% for error in editEmailForm.email.vars.errors %}
+                    <div class="invalid-feedback">
+                        {{ error.message }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button class="btn btn-primary">Mettre à jour</button>
+
+        {{ form_end(editEmailForm) }}
+    </div>
+{% endblock %}
