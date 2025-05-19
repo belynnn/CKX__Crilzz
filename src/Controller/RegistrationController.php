@@ -31,7 +31,7 @@ class RegistrationController extends AbstractController
             // Ajoute le rôle par défaut
             $user->setRoles(['ROLE_USER']);
 
-            $user->setAvatar('images/avatars/default.png');
+            $user->setAvatar('images/default.png');
 
             $entityManager->persist($user);
             $entityManager->flush();
