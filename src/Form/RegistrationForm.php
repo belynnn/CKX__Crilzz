@@ -6,12 +6,15 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationForm extends AbstractType
 {
@@ -48,27 +51,12 @@ class RegistrationForm extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => "Merci d'entrer un mot de passe",
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => "Votre mot de passe doit contenir au moins {{ limit }} caractères",
-                        'max' => 300,
-                    ]),
-                ],
+                'required' => true,
             ])
-
-            ->add('plainPasswordConfirm', PasswordType::class, [
-                'label' => 'Confirmer le mot de passe',
+            ->add('confirmPlainPassword', PasswordType::class, [
+                'label' => 'Confirmez le mot de passe',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de confirmer votre mot de passe.',
-                    ]),
-                ],
+                'required' => true,
             ])
 
             ->add('agreeTerms', CheckboxType::class, [
@@ -81,12 +69,22 @@ class RegistrationForm extends AbstractType
                 ],
             ])
         ;
+
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+            $form = $event->getForm();
+            $password = $form->get('plainPassword')->getData();
+            $confirm = $form->get('confirmPlainPassword')->getData();
+
+            if ($password !== $confirm) {
+                $form->get('confirmPlainPassword')->addError(new FormError('Les mots de passe ne correspondent pas.'));
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => User::class, // ou null si tu n'utilises pas d'entité
         ]);
     }
 }
