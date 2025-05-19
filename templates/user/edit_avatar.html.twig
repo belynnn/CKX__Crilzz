@@ -13,7 +13,7 @@
           {% for child in editAvatarForm.avatar %}
             <label class="avatar-choice-label">
               {{ form_widget(child) }}
-              <img src="{{ asset('uploads/avatars/' ~ child.vars.value) }}"
+              <img src="{{ asset('images/avatars/' ~ child.vars.value) }}"
                 alt="{{ child.vars.label }}"
                 class="avatar-choice-preview"
               />
