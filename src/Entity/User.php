@@ -22,6 +22,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50)]
     private ?string $username = null;
 
+    #[Assert\NotBlank(message: 'Veuillez entrer une adresse email.')]
+    #[Assert\Email(message: 'L\'adresse "{{ value }}" n\'est pas valide.')]
     #[ORM\Column(type: 'string', length: 100, nullable: true)]
     private ?string $email = null;
     
@@ -155,8 +157,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->createdAt;
     }
 
-    #[Assert\NotBlank(groups: ['registration'])]
-    #[Assert\Length(min: 8, groups: ['registration'])]
     private ?string $plainPassword = null;
 
     public function getPlainPassword(): ?string
