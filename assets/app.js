@@ -11,9 +11,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Toast } from 'bootstrap';
 
-console.log(Toast);
-
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("JS chargé ✅");
+    
     /////////////////////////////////////////
     // Toast notifications
     /////////////////////////////////////////
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /////////////////////////////////////////
     // Mailing
     /////////////////////////////////////////
-    console.log("JS chargé ✅");
 
     const contactLink = document.getElementById("contact-email");
     const form = document.getElementById("contact-form");
