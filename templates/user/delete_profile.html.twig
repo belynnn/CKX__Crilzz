@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer mon profil{% endblock %}
+
+{% block body %}
+  <div class="container py-5">
+    <h1 class="mb-4">Supprimer mon compte</h1>
+
+    <p class="text-danger">⚠️ Cette action supprimera votre compte. Vous ne pourrez plus vous connecter.</p>
+
+    <form method="post" action="{{ path('app_user_delete_profile') }}" onsubmit="return confirm('Confirmez-vous la suppression de votre compte ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
+        <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
+    </form>
+  </div>
+{% endblock %}
